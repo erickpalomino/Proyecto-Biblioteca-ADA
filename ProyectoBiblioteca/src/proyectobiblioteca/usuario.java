@@ -9,6 +9,7 @@ package proyectobiblioteca;
  *
  * @author USER
  */
+
 public class usuario {
     //atributos
     private int codigo;
