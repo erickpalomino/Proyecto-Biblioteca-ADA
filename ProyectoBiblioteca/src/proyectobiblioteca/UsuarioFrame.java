@@ -15,7 +15,9 @@ public class UsuarioFrame extends GUIBib{
     /**
      * Creates new form UsuarioFrame
      */
+    usuario user1 = new usuario(0, 0, 0, true, "mundo");
     public UsuarioFrame() {
+        
         initComponents();
     }
 
@@ -83,12 +85,14 @@ public class UsuarioFrame extends GUIBib{
 
     private void BotonBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonBuscarMouseClicked
         String buscarTitu=TFbusquedaTitulo.getText();
+        ListaLibrosText.setText(user1.buscar(buscarTitu));
+        /*
         ArrayList<Libro> listaLibros=hashTableGeneral.buscarNombre(buscarTitu);
         String TextoImpreso="";
         for(Libro lib:listaLibros){
             TextoImpreso=TextoImpreso + lib.toString()+ "\n";
         }
-        ListaLibrosText.setText(TextoImpreso);
+        ListaLibrosText.setText(TextoImpreso);*/
     }//GEN-LAST:event_BotonBuscarMouseClicked
 
     /**
