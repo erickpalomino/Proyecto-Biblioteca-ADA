@@ -15,7 +15,7 @@ public class UsuarioFrame extends GUIBib{
     /**
      * Creates new form UsuarioFrame
      */
-    usuario user1 = new usuario(0, 0, 0, true, "mundo");
+    usuario user1 = new usuario(1);
     public UsuarioFrame() {
         
         initComponents();
@@ -35,6 +35,7 @@ public class UsuarioFrame extends GUIBib{
         BotonBuscar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         ListaLibrosText = new javax.swing.JTextArea();
+        OrdenarTitulo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,21 +52,33 @@ public class UsuarioFrame extends GUIBib{
         ListaLibrosText.setRows(5);
         jScrollPane2.setViewportView(ListaLibrosText);
 
+        OrdenarTitulo.setText("Ordenar");
+        OrdenarTitulo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                OrdenarTituloMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(34, 34, 34)
-                        .addComponent(TFbusquedaTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
-                        .addGap(42, 42, 42)
-                        .addComponent(BotonBuscar)))
-                .addGap(21, 21, 21))
+                        .addComponent(OrdenarTitulo)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(34, 34, 34)
+                                .addComponent(TFbusquedaTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+                                .addGap(42, 42, 42)
+                                .addComponent(BotonBuscar)))
+                        .addGap(21, 21, 21))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -75,8 +88,10 @@ public class UsuarioFrame extends GUIBib{
                     .addComponent(TFbusquedaTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(BotonBuscar))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(OrdenarTitulo)
+                .addGap(2, 2, 2)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(70, Short.MAX_VALUE))
         );
 
@@ -94,6 +109,10 @@ public class UsuarioFrame extends GUIBib{
         }
         ListaLibrosText.setText(TextoImpreso);*/
     }//GEN-LAST:event_BotonBuscarMouseClicked
+
+    private void OrdenarTituloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OrdenarTituloMouseClicked
+       ListaLibrosText.setText(user1.ordenarAlfabeticamente()); // TODO add your handling code here:
+    }//GEN-LAST:event_OrdenarTituloMouseClicked
 
     /**
      * @param args the command line arguments
@@ -133,6 +152,7 @@ public class UsuarioFrame extends GUIBib{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonBuscar;
     private javax.swing.JTextArea ListaLibrosText;
+    private javax.swing.JButton OrdenarTitulo;
     private javax.swing.JTextField TFbusquedaTitulo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
