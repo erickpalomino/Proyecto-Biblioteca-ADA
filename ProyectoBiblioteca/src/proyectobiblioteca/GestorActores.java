@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class GestorActores implements Serializable {
 
     ArrayList<Actor> actores;
+    int codGen=0;
     private static final long serialVersionUID =4529685098267757690L;
 
     public GestorActores(){
@@ -14,22 +15,42 @@ public class GestorActores implements Serializable {
     }
     
     public void registrar(int password, int nivel) {
+        Actor newActor;
         switch (nivel) {
             case 1:
-                actores.add(new usuario(password));
+                newActor=new usuario(password);
+                newActor.setCodigo(codGen);
+                actores.add(newActor);
+                
                 break;
             case 2:
-                actores.add(new bibliotecario(password));
+                newActor=new bibliotecario(password);
+                newActor.setCodigo(codGen);
+                actores.add(newActor);
                 break;
             case 3:
-                actores.add(new bibliotecologo(password));
+                newActor=new bibliotecologo(password);
+                newActor.setCodigo(codGen);
+                actores.add(newActor);
                 break;
         }
+        codGen++;
         guardarEnArchivo();
     }
 
     public Actor buscar(int codigo) {
-        return actores.get(codigo - 1);
+        for(Actor a:actores){
+            if(a.getCodigo()==codigo){
+                return a;
+            }
+        }
+        System.out.println("Actor no encontrado");
+        return null;
+    }
+    public void eliminar(int codigo){
+        Actor actElim=buscar(codigo);
+        actores.remove(actElim);
+        guardarEnArchivo();
     }
     
     public boolean Login(int codigo,int contraseña){

@@ -51,7 +51,7 @@ public class HashTable implements Serializable{
         }
         System.out.println("Libro añadido en la posición: "+pos+" del Arreglo general y"
                 + " la posición: "+pos1+" delArrayList");
-        
+        this.GuardarEnArchivo();
     }
     
     /*Busqueda de libro por ISBN, devuelve un arreglo de dos posiciones
@@ -82,8 +82,8 @@ public class HashTable implements Serializable{
         return pos;
     } 
     //método para eliminar un libro de la tabla, puede ser modificado para que retorne booleano y sea mmás manejable
-    public void eliminarLibro(Libro libro){
-        int[] position=busquedaISBN(libro.getISBN());
+    public void eliminarLibro(int ISBN){
+        int[] position=busquedaISBN(ISBN);
         
         if(position[1]!=-1){
             arrayGeneral[position[0]].remove(position[1]);
@@ -92,7 +92,7 @@ public class HashTable implements Serializable{
         else{
             System.out.println("Elemento no existe");
         }
-        
+        this.GuardarEnArchivo();
     }
     //método que busca secuencialmente los libros que contengan el string nombre
     public ArrayList<Libro> buscarNombre(String nombre){
