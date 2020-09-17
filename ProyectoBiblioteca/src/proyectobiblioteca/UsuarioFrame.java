@@ -15,7 +15,15 @@ public class UsuarioFrame extends GUIBib{
     /**
      * Creates new form UsuarioFrame
      */
+<<<<<<< Updated upstream
     usuario user1 = new usuario(0, 0, 0, true, "mundo");
+=======
+    usuario user1 = new usuario(1);
+    
+    HashTable hashTableGeneral=HashTable.LeerArchivo();
+    GestorActores gestorActoresGeneral=GestorActores.leerEnArchivo();
+    //GestorSolicitudes gestotSolicitudesGeneral = GestorSolicitudes.leerEnArchivo();
+>>>>>>> Stashed changes
     public UsuarioFrame() {
         
         initComponents();
@@ -35,6 +43,15 @@ public class UsuarioFrame extends GUIBib{
         BotonBuscar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         ListaLibrosText = new javax.swing.JTextArea();
+<<<<<<< Updated upstream
+=======
+        OrdenarTitulo = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        libro_solicitado = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        solicitar_prestamo = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+>>>>>>> Stashed changes
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,11 +63,46 @@ public class UsuarioFrame extends GUIBib{
                 BotonBuscarMouseClicked(evt);
             }
         });
+        BotonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonBuscarActionPerformed(evt);
+            }
+        });
 
+        ListaLibrosText.setEditable(false);
         ListaLibrosText.setColumns(20);
         ListaLibrosText.setRows(5);
         jScrollPane2.setViewportView(ListaLibrosText);
 
+<<<<<<< Updated upstream
+=======
+        OrdenarTitulo.setText("Ordenar");
+        OrdenarTitulo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                OrdenarTituloMouseClicked(evt);
+            }
+        });
+
+        jLabel2.setText("Ingrese el codigo del libro que desea solicitar y luego presione el botón");
+
+        libro_solicitado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                libro_solicitadoActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Nombre:");
+
+        solicitar_prestamo.setText("solicitar prestamo");
+        solicitar_prestamo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                solicitar_prestamoMouseClicked(evt);
+            }
+        });
+
+        jButton1.setText("cerrar sesión");
+
+>>>>>>> Stashed changes
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -60,24 +112,67 @@ public class UsuarioFrame extends GUIBib{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
+<<<<<<< Updated upstream
                         .addComponent(jLabel1)
                         .addGap(34, 34, 34)
                         .addComponent(TFbusquedaTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
                         .addGap(42, 42, 42)
                         .addComponent(BotonBuscar)))
                 .addGap(21, 21, 21))
+=======
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(34, 34, 34)
+                                .addComponent(TFbusquedaTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                                .addGap(42, 42, 42)
+                                .addComponent(BotonBuscar)))
+                        .addGap(15, 15, 15))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(libro_solicitado, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addComponent(solicitar_prestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
+>>>>>>> Stashed changes
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TFbusquedaTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(BotonBuscar))
+<<<<<<< Updated upstream
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(70, Short.MAX_VALUE))
+=======
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(OrdenarTitulo)
+                .addGap(2, 2, 2)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(libro_solicitado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(solicitar_prestamo))
+                .addContainerGap(16, Short.MAX_VALUE))
+>>>>>>> Stashed changes
         );
 
         pack();
@@ -95,6 +190,34 @@ public class UsuarioFrame extends GUIBib{
         ListaLibrosText.setText(TextoImpreso);*/
     }//GEN-LAST:event_BotonBuscarMouseClicked
 
+<<<<<<< Updated upstream
+=======
+    private void OrdenarTituloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OrdenarTituloMouseClicked
+       ListaLibrosText.setText(user1.ordenarAlfabeticamente()); // TODO add your handling code here:
+    }//GEN-LAST:event_OrdenarTituloMouseClicked
+
+    private void libro_solicitadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libro_solicitadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_libro_solicitadoActionPerformed
+
+    private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonBuscarActionPerformed
+
+    private void solicitar_prestamoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_solicitar_prestamoMouseClicked
+        // TODO add your handling code here:
+        int codigo = Integer.parseInt(libro_solicitado.getText());
+        System.out.println(codigo);
+        Libro lib = hashTableGeneral.busqueda_por_codigo(codigo);
+        System.out.println(lib.getISBN());
+        System.out.println(lib.getTitulo());
+        solicitud sol = new solicitud(user1, lib);
+        System.out.println(sol.lib.getISBN());
+        System.out.println(sol.lib.getTitulo());
+        //gestotSolicitudesGeneral.encolar(sol);
+    }//GEN-LAST:event_solicitar_prestamoMouseClicked
+
+>>>>>>> Stashed changes
     /**
      * @param args the command line arguments
      */
@@ -121,6 +244,7 @@ public class UsuarioFrame extends GUIBib{
             java.util.logging.Logger.getLogger(UsuarioFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -134,7 +258,12 @@ public class UsuarioFrame extends GUIBib{
     private javax.swing.JButton BotonBuscar;
     private javax.swing.JTextArea ListaLibrosText;
     private javax.swing.JTextField TFbusquedaTitulo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField libro_solicitado;
+    private javax.swing.JButton solicitar_prestamo;
     // End of variables declaration//GEN-END:variables
 }

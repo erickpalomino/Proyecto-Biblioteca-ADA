@@ -81,6 +81,33 @@ public class HashTable implements Serializable{
         }
         return pos;
     } 
+    
+    public Libro busqueda_por_codigo(int isbn){
+        int[] pos=new int[2];
+        Libro abc;
+        pos[0]=hash(isbn);
+        pos[1]=0;
+        boolean existe= false;
+        if(arrayGeneral[pos[0]]==null){
+            return arrayGeneral[pos[0]].get(pos[1]);
+        }
+        else{// ocurre colisión
+            pos[1]=0;
+            for (Libro lib:arrayGeneral[pos[0]]){
+                if(lib.getISBN()==isbn){
+                    existe=true;
+                    System.out.println("Este libro ya se encuentra registrado");
+                    return arrayGeneral[pos[0]].get(pos[1]);
+                }
+                pos[1]++;
+            }
+            if(!existe){
+                pos[1]=-1;
+            }
+        }
+        return  arrayGeneral[pos[0]].get(pos[1]);
+    } 
+    
     //método para eliminar un libro de la tabla, puede ser modificado para que retorne booleano y sea mmás manejable
     public void eliminarLibro(Libro libro){
         int[] position=busquedaISBN(libro.getISBN());
