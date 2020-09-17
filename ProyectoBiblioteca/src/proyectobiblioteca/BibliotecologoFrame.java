@@ -10,6 +10,7 @@ package proyectobiblioteca;
  * @author Super-PC-Gamer
  */
 public class BibliotecologoFrame extends GUIBib {
+    Actor usuario;//el usuario actual
 
     /**
      * Creates new form BibliotecologoFrame
@@ -71,6 +72,7 @@ public class BibliotecologoFrame extends GUIBib {
         buscarISBN = new javax.swing.JButton();
         eliminarBot = new javax.swing.JButton();
         busqYelimISBN = new javax.swing.JLabel();
+        CerrarButton = new javax.swing.JButton();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -130,7 +132,7 @@ public class BibliotecologoFrame extends GUIBib {
                     .addComponent(jLabel15)
                     .addComponent(jLabel2)
                     .addComponent(codGen, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,7 +168,7 @@ public class BibliotecologoFrame extends GUIBib {
                     .addComponent(jLabel16))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(eliminarText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -295,7 +297,7 @@ public class BibliotecologoFrame extends GUIBib {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(eliminarBot))
                     .addComponent(busqYelimISBN))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,10 +342,17 @@ public class BibliotecologoFrame extends GUIBib {
                     .addComponent(eliminarBot))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(busqYelimISBN)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Administrar Libros", jPanel2);
+
+        CerrarButton.setText("Cerrar Sesión");
+        CerrarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CerrarButtonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -351,13 +360,19 @@ public class BibliotecologoFrame extends GUIBib {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(CerrarButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
+                .addComponent(CerrarButton)
+                .addGap(18, 18, 18)
                 .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
@@ -421,6 +436,12 @@ public class BibliotecologoFrame extends GUIBib {
         textoUsuarios.setText(gestorActoresGeneral.toString());
     }//GEN-LAST:event_EliminarButtonMouseClicked
 
+    private void CerrarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarButtonMouseClicked
+        Login login=new Login();
+        login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_CerrarButtonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -458,6 +479,7 @@ public class BibliotecologoFrame extends GUIBib {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonRegistrar;
+    private javax.swing.JButton CerrarButton;
     private javax.swing.JButton EliminarButton;
     private javax.swing.JTextField ISBNBusq;
     private javax.swing.JTextField ISBNReg;
