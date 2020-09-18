@@ -17,7 +17,7 @@ import java.util.ArrayList;
  *Clase Hashtable que almacenará a los libros y los guardará en un archivo
  * @author Erick
  */
-public class HashTable implements Serializable{
+public class HashTable implements Serializable{ 
     private ArrayList<Libro>[] arrayGeneral= new ArrayList[100];
     private static final long serialVersionUID =6529685098267757690L; //código de serialización, para evitar errores
     public HashTable(){
@@ -51,49 +51,42 @@ public class HashTable implements Serializable{
         }
         System.out.println("Libro añadido en la posición: "+pos+" del Arreglo general y"
                 + " la posición: "+pos1+" delArrayList");
-        this.GuardarEnArchivo();
+        GuardarEnArchivo();
     }
     
     /*Busqueda de libro por ISBN, devuelve un arreglo de dos posiciones
     la primera posición es dentro del arreglo general, la segunda es dentro de la 
     lista ubicada en la primera posición.*/
-    public int[] busquedaISBN(int isbn){
-        int[] pos=new int[2];
-        pos[0]=hash(isbn);
-        pos[1]=-1;
-        boolean existe= false;
-        if(arrayGeneral[pos[0]]==null){
-            return pos;
+    public Libro busquedaISBN(int isbn){
+        int pos;
+        pos=hash(isbn);
+        if(arrayGeneral[pos]==null){
+            return null;
         }
         else{// ocurre colisión
-            pos[1]=0;
-            for (Libro lib:arrayGeneral[pos[0]]){
+            for (Libro lib:arrayGeneral[pos]){
                 if(lib.getISBN()==isbn){
-                    existe=true;
                     System.out.println("Este libro ya se encuentra registrado");
-                    return pos;
+                    return lib;
                 }
-                pos[1]++;
-            }
-            if(!existe){
-                pos[1]=-1;
             }
         }
-        return pos;
+        return null;
     } 
     //método para eliminar un libro de la tabla, puede ser modificado para que retorne booleano y sea mmás manejable
     public void eliminarLibro(int ISBN){
-        int[] position=busquedaISBN(ISBN);
-        
-        if(position[1]!=-1){
-            arrayGeneral[position[0]].remove(position[1]);
-            System.out.println("Elemento eliminado existosamente");
+        Libro lib=busquedaISBN(ISBN);
+        int pos=0;
+        pos=hash(ISBN);
+        if(arrayGeneral[pos].remove(lib)){
+            System.out.println("Eliminaste bien");
+            GuardarEnArchivo();
         }
-        else{
-            System.out.println("Elemento no existe");
-        }
-        this.GuardarEnArchivo();
+        else
+            System.out.println("No se encontró el Libro");
     }
+        
+    
     //método que busca secuencialmente los libros que contengan el string nombre
     public ArrayList<Libro> buscarNombre(String nombre){
         ArrayList<Libro> libros=new ArrayList<Libro>();

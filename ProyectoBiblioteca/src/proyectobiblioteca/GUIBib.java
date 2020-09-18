@@ -11,7 +11,7 @@ package proyectobiblioteca;
  * @author Erick
  */
 public class GUIBib extends javax.swing.JFrame {
-    HashTable hashTableGeneral=HashTable.LeerArchivo();
+    static HashTable hashTableGeneral=HashTable.LeerArchivo();
     GestorActores gestorActoresGeneral=GestorActores.leerEnArchivo();
     /**
      * Creates new form GUIBib

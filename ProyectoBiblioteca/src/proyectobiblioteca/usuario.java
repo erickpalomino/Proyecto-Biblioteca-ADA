@@ -13,7 +13,6 @@ import java.util.ArrayList;
  */
 public class usuario extends Actor{
     //atributos
-    private HashTable h1n1 = HashTable.LeerArchivo();
     private boolean habilitado;
     ArrayList<Libro> listaLibros;
     //private libro libro_prestado; // para cuando se cree 
@@ -23,18 +22,16 @@ public class usuario extends Actor{
         
     }
     public usuario(int clave){
-        this.setCodigo(getNumeroDeActores()+1);
         this.setPassword(clave); 
         this.setNivel(1);
         this.listaLibros=new ArrayList<Libro>();
         this.habilitado = habilitado;
         this.libro_prestado = "";
-        this.setNumeroDeActores(getNumeroDeActores()+1);
     }
     //metodos
     String buscar(String nombre){
         //h1n1.buscarNombre(nombre);
-        this.listaLibros=h1n1.buscarNombre(nombre);
+        this.listaLibros=ProyectoBiblioteca.hashTableGeneral.buscarNombre(nombre);
         String TextoImpreso="";
         for(Libro lib:listaLibros){
             TextoImpreso=TextoImpreso + lib.toString()+ "\n";

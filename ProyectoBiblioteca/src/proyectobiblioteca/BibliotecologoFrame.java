@@ -91,7 +91,12 @@ public class BibliotecologoFrame extends GUIBib {
 
         jLabel3.setText("Nivel");
 
-        NivelCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario", "Bibliotecario", "Bibliotecólogo" }));
+        NivelCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario", "Bibliotecólogo" }));
+        NivelCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NivelComboActionPerformed(evt);
+            }
+        });
 
         codGen.setText("Código Generado: ");
 
@@ -387,13 +392,11 @@ public class BibliotecologoFrame extends GUIBib {
         switch(String.valueOf(NivelCombo.getSelectedItem())){
             case "Usuario":nivel=1;
             break;
-            case "Bibliotecario":nivel=2;
-            break;
             case "Bibliotecólogo":nivel=3;
             break;
         }
         gestorActoresGeneral.registrar(contraseña, nivel);
-        codGen.setText("Código Generado: "+gestorActoresGeneral.actores.size());
+        codGen.setText("Código Generado: "+gestorActoresGeneral.actores.get(gestorActoresGeneral.actores.size()-1).getCodigo());
         textoUsuarios.setText(gestorActoresGeneral.toString());
     }//GEN-LAST:event_BotonRegistrarMouseClicked
 
@@ -412,21 +415,21 @@ public class BibliotecologoFrame extends GUIBib {
         int año=Integer.parseInt(this.año.getText());
         int añoreg=Integer.parseInt(this.añoReg.getText());
         Libro newlibro=new Libro(titulo, autor, codDewey, editorial, ISBN, pags, ejemplares, año, añoreg);
-        hashTableGeneral.añadir(newlibro);
+        ProyectoBiblioteca.hashTableGeneral.añadir(newlibro);
     }//GEN-LAST:event_añadirLibroMouseClicked
 
     private void buscarISBNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarISBNMouseClicked
         int ISBN=Integer.parseInt(ISBNBusq.getText());
-        int pos[]=hashTableGeneral.busquedaISBN(ISBN);
-        if(pos[1]!=-1)
-        busqYelimISBN.setText("Libro: \n"+hashTableGeneral.getArrayGeneral()[pos[0]].get(pos[1]).getTitulo());
+        Libro libro=ProyectoBiblioteca.hashTableGeneral.busquedaISBN(ISBN);
+        if(libro!=null)
+        busqYelimISBN.setText("Libro: \n"+libro.getTitulo());
         else
             busqYelimISBN.setText("Libro:No existe");
     }//GEN-LAST:event_buscarISBNMouseClicked
 
     private void eliminarBotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarBotMouseClicked
         int ISBN=Integer.parseInt(ISBNBusq.getText());
-        hashTableGeneral.eliminarLibro(ISBN);
+        ProyectoBiblioteca.hashTableGeneral.eliminarLibro(ISBN);
         busqYelimISBN.setText("Libro: Eliminado correctamente");
     }//GEN-LAST:event_eliminarBotMouseClicked
 
@@ -441,6 +444,10 @@ public class BibliotecologoFrame extends GUIBib {
         login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_CerrarButtonMouseClicked
+
+    private void NivelComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NivelComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NivelComboActionPerformed
 
     /**
      * @param args the command line arguments

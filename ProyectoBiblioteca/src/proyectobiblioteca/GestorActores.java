@@ -23,11 +23,6 @@ public class GestorActores implements Serializable {
                 actores.add(newActor);
                 
                 break;
-            case 2:
-                newActor=new bibliotecario(password);
-                newActor.setCodigo(codGen);
-                actores.add(newActor);
-                break;
             case 3:
                 newActor=new bibliotecologo(password);
                 newActor.setCodigo(codGen);
@@ -64,10 +59,11 @@ public class GestorActores implements Serializable {
         if(validacion){
             switch(act.getNivel()){
                 case 1:UsuarioFrame u=new UsuarioFrame();
-                u.setVisible(true);
-                break;
-                case 2:bibliotecario_interface b=new bibliotecario_interface();
-                b.setVisible(true);
+                usuario user;
+                user=(usuario)act;
+                u.setUser1(user);
+                u.actualizarUsuario();
+            u.setVisible(true);
                 break;
                 case 3:BibliotecologoFrame b1=new BibliotecologoFrame();
                 b1.setVisible(true);

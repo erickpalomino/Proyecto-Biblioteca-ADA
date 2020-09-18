@@ -179,13 +179,15 @@
             <Component class="javax.swing.JComboBox" name="NivelCombo">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="3">
+                  <StringArray count="2">
                     <StringItem index="0" value="Usuario"/>
-                    <StringItem index="1" value="Bibliotecario"/>
-                    <StringItem index="2" value="Bibliotec&#xf3;logo"/>
+                    <StringItem index="1" value="Bibliotec&#xf3;logo"/>
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NivelComboActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>

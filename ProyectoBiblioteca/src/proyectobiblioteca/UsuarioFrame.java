@@ -15,10 +15,14 @@ public class UsuarioFrame extends GUIBib{
     /**
      * Creates new form UsuarioFrame
      */
-    usuario user1 = new usuario(1);
-    public UsuarioFrame() {
-        
+    private usuario user1 = new usuario();
+    public UsuarioFrame() {   
         initComponents();
+        this.gestorActoresGeneral=GestorActores.leerEnArchivo();
+        
+    }
+    public void actualizarUsuario(){
+        L_user.setText(L_user.getText()+" "+user1.getCodigo());
     }
 
     /**
@@ -36,6 +40,8 @@ public class UsuarioFrame extends GUIBib{
         jScrollPane2 = new javax.swing.JScrollPane();
         ListaLibrosText = new javax.swing.JTextArea();
         OrdenarTitulo = new javax.swing.JButton();
+        L_user = new javax.swing.JLabel();
+        B_logout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,6 +65,15 @@ public class UsuarioFrame extends GUIBib{
             }
         });
 
+        L_user.setText("Usuario: ");
+
+        B_logout.setText("Cerrar Sesión");
+        B_logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_logoutMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -69,8 +84,12 @@ public class UsuarioFrame extends GUIBib{
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(OrdenarTitulo)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(L_user)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(B_logout))
                             .addComponent(jScrollPane2)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
@@ -83,7 +102,11 @@ public class UsuarioFrame extends GUIBib{
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(L_user)
+                    .addComponent(B_logout))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TFbusquedaTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
@@ -92,7 +115,7 @@ public class UsuarioFrame extends GUIBib{
                 .addComponent(OrdenarTitulo)
                 .addGap(2, 2, 2)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         pack();
@@ -100,7 +123,7 @@ public class UsuarioFrame extends GUIBib{
 
     private void BotonBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonBuscarMouseClicked
         String buscarTitu=TFbusquedaTitulo.getText();
-        ListaLibrosText.setText(user1.buscar(buscarTitu));
+        ListaLibrosText.setText(getUser1().buscar(buscarTitu));
         /*
         ArrayList<Libro> listaLibros=hashTableGeneral.buscarNombre(buscarTitu);
         String TextoImpreso="";
@@ -111,8 +134,14 @@ public class UsuarioFrame extends GUIBib{
     }//GEN-LAST:event_BotonBuscarMouseClicked
 
     private void OrdenarTituloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OrdenarTituloMouseClicked
-       ListaLibrosText.setText(user1.ordenarAlfabeticamente()); // TODO add your handling code here:
+       ListaLibrosText.setText(getUser1().ordenarAlfabeticamente()); // TODO add your handling code here:
     }//GEN-LAST:event_OrdenarTituloMouseClicked
+
+    private void B_logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_logoutMouseClicked
+        Login login=new Login();
+        login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_B_logoutMouseClicked
 
     /**
      * @param args the command line arguments
@@ -150,11 +179,27 @@ public class UsuarioFrame extends GUIBib{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton B_logout;
     private javax.swing.JButton BotonBuscar;
+    private javax.swing.JLabel L_user;
     private javax.swing.JTextArea ListaLibrosText;
     private javax.swing.JButton OrdenarTitulo;
     private javax.swing.JTextField TFbusquedaTitulo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the user1
+     */
+    public usuario getUser1() {
+        return user1;
+    }
+
+    /**
+     * @param user1 the user1 to set
+     */
+    public void setUser1(usuario user1) {
+        this.user1 = user1;
+    }
 }

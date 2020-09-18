@@ -3,7 +3,8 @@ package proyectobiblioteca;
 import java.io.Serializable;
 
 public class Actor implements Serializable{
-
+   
+    static HashTable hashTableGeneral=HashTable.LeerArchivo();
     private int nivel; //usuario=1 , bibliotecario=2 , admin=3
     private int codigo;
     private int password;
